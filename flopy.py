@@ -440,29 +440,6 @@ def get_Hz(Vtransform, Vstretching, N, theta_s, theta_b, h, hc, zeta=0, Hscale=3
     depths = get_depths(Vtransform, C, h, hc)
     return np.diff(depths(sw, zeta), axis=0)
 
-
-
-# DESIGN QUESTIONS and TODO items
-
-# should get_srho and get_sw take the same N (i.e., always return N values),
-# or should both be based on N rho points, as in ROMS?
-
-# is the check_s_limits decorator cool/flexible or confusing/distracting?
-
-# Naming and variable input order in wrapper functions OK?
-
-# Unit tests?  Would be nice.
-
-# is there more or better logic that returns things of the right shape?  In particular, is
-# there a way to ensure that zeta broadcasts correctly?  This is probably more important for
-# nc_depths, when the depths object is indexed, but some of that logic could be brought
-# over here.
-
-
-
-
-
-
 def floc_props(Df, Dp0, nf, rhos = 2650., rhow = 1025.0, nu = 0.001 ):
    g = 9.81
    rhof =rhow+(rhos-rhow)*(Dp0 /Df)**(3.0-nf)   # floc density
@@ -480,6 +457,23 @@ def main():
    rhof, wsf = floc_props( Df, Dp0, nf )
    print("rhof: ",rhof)
    print("wsf : ",wsf)
+
+   print("Testing Hetland's depth.py functions:\n")
+   Vtransform = 1
+   Vstretching = 1
+   N  = 50
+   Np = 51
+   hc = 0.0 
+   theta_s = 1.0
+   theta_b = 0.8
+   h = 5.
+   # use Rob Hetland's depths.py functions
+   zw = get_zw(Vtransform=Vtransform, Vstretching=Vstretching, N=N+1, \
+    theta_s=theta_s, theta_b=theta_b, h=h, hc=hc, zeta=0, Hscale=3)
+   z = get_zrho(Vtransform=Vtransform, Vstretching=Vstretching, N=N, \
+    theta_s=theta_s, theta_b=theta_b, h=h, hc=hc, zeta=0, Hscale=3)
+   print(zw)
+   print(z)
 
 if __name__ == "__main__":
    main()
