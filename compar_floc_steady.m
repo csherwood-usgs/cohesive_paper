@@ -423,8 +423,8 @@ end
 %% plot all results
 figure(12);clf
 %plt.title(r'Equilibrium Floc Size',fontsize=16)
-ylabel('Average Diameter $D$ ($\mu$m)','FontSize',14)
-xlabel('Turbulence Shear Rate $G$ (s$^{-1}$)','FontSize',14)
+ylabel('Average Diameter D (\mum)','FontSize',14)
+xlabel('Turbulence Shear Rate G (s^{-1})','FontSize',14)
 %plot(G[0,:],d[0,:],'.',markersize=10,label="1 kg/m^3")
 line(G{3},d{3},'Marker','.','Color',[.5,0,0],'LineStyle','none')
 line(G{1},d{1},'Marker','.','Color',[.8,.5,0],'LineStyle','none')
@@ -433,7 +433,7 @@ line(G{4},d{4},'Marker','.','Color',[.6,.6,.6],'LineStyle','none')
 line(G{5}, d{5},'Marker','.','Color','g','LineStyle','none')
 line(G{6}, d{6},'Marker','.','Color','b','LineStyle','none')
 line(G{7}, d{7},'Marker','.','Color','k','LineStyle','none')
-%axis([0, 6,100,700])
+axis([0, 20,0,1500])
 legend('5 kg/m^3','1 kg/m^3','0.2 kg/m^3','1 kg/m^3 nf=1.9','1 kg/m^3 nf=2.1',...
        '1 kg/m^3 N=20','1 kg/m^3 N=100' ,0)
 print -dpng Multiple_cases_steady.png
@@ -563,7 +563,7 @@ a8=line(call{8}',wsaall{8}','Marker','.','Color',[0,.5,0],'LineStyle','none','Ma
 a9=line(call{9}',wsaall{9}','Marker','.','Color',[0,.5,.5],'LineStyle','none','MarkerSize',16);  %64q
 a10=line(call{10}',wsaall{10}','Marker','.','Color','c','LineStyle','none','MarkerSize',16);     %65q
 a11=line(call{11}',wsaall{11}','Marker','.','Color','y','LineStyle','none','MarkerSize',16);     %66q
-axis([1e-1, 10,0.07,0.3])
+%axis([1e-1, 10,0.07,0.3])
 set(gca,'YTick',[0.08,0.09,0.1,0.2,0.3])
 legend([a1(1),a2(1),a3(1),a4(1),a5(1),a6(1),a7(1),a8(1),a9(1),a10(1),a11(1)],...
     '5 kg/m^3','1 kg/m^3','0.2 kg/m^3','1 kg/m^3 nf=1.9','1 kg/m^3 nf=2.1',...
@@ -588,7 +588,7 @@ a9=line(call{9}',wsaall{9}','Marker','.','Color',[0,.5,.5],'LineStyle','none','M
 a10=line(call{10}',wsaall{10}','Marker','.','Color','c','LineStyle','none','MarkerSize',16);     %65q
 a11=line(call{11}',wsaall{11}','Marker','.','Color','y','LineStyle','none','MarkerSize',16);     %66q
 a10=line(call{10}',wsaall{10}','Marker','.','Color','c','LineStyle','none','MarkerSize',16);     %65q
-axis([6e-1, 2,0.07,0.3])
+%axis([6e-1, 2,0.07,0.3])
 set(gca,'YTick',[0.08,0.09,0.1,0.2,0.3])
 legend([a2(1),a4(1),a5(1),a6(1),a7(1),a8(1),a9(1),a10(1),a11(1)],...
     '1 kg/m^3','1 kg/m^3 nf=1.9','1 kg/m^3 nf=2.1',...
@@ -615,7 +615,7 @@ a19=line(call{19}',wsaall{19}','Marker','.','Color','k','LineStyle','none','Mark
 a20=line(call{20}',wsaall{20}','Marker','.','Color','g','LineStyle','none','MarkerSize',16);
 a21=line(call{21}',wsaall{21}','Marker','.','Color','c','LineStyle','none','MarkerSize',16);
 a22=line(call{22}',wsaall{22}','Marker','.','Color','y','LineStyle','none','MarkerSize',16);
-axis([7e-2, 130,0.08,0.15])
+%axis([7e-2, 130,0.08,0.15])
 set(gca,'YTick',[0.08,0.09,0.1,0.12,0.15])
 legend([a12(1),a2(1),a13(1),a14(1),a15(1),a1(1),a16(1),a17(1),a3(1),a18(1),a19(1),a20(1),a21(1),a22(1)],...
     '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3','2 kg/m^3',...
