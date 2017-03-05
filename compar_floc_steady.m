@@ -437,9 +437,157 @@ axis([0, 20,0,1500])
 legend('5 kg/m^3','1 kg/m^3','0.2 kg/m^3','1 kg/m^3 nf=1.9','1 kg/m^3 nf=2.1',...
        '1 kg/m^3 N=20','1 kg/m^3 N=100' ,0)
 print -dpng Multiple_cases_steady.png
+%%
+% flist = {'r056q','r057q','r058q','r059q','r060q','r061q',...
+%          'r062q','r063q','r064q','r065q','r066q','r067q','r068q','r069q','r070q','r071q',...
+%          'r072q','r073q','r074q','r075q','r076q','r077q'};
+figure(122);clf
+ylabel('Average Diameter D (\mum)','FontSize',14)
+xlabel('Turbulence Shear Rate G (s^{-1})','FontSize',14)
+a14=line(G{22}, d{22},'Marker','.','MarkerSize',16,'Color',[.5,0,.5],'LineStyle','none');%100 %77
+a13=line(G{21}, d{21},'Marker','.','MarkerSize',16,'Color',[0,0,.5],'LineStyle','none');%50   %76
+a12=line(G{20}, d{20},'Marker','.','MarkerSize',16,'Color',[0,.5,.5],'LineStyle','none');%20  %75
+a11=line(G{19}, d{19},'Marker','.','MarkerSize',16,'Color',[.8,.8,.8],'LineStyle','none');%10 %74
+a10=line(G{18}, d{18},'Marker','.','MarkerSize',16,'Color','y','LineStyle','none');%7         %73
+a3=line(G{3}, d{3},'Marker','.','MarkerSize',16,'Color',[.5,0,0],'LineStyle','none');%5       %58
+a9=line(G{17}, d{17},'Marker','.','MarkerSize',16,'Color','r','LineStyle','none');%3            %72
+a8=line(G{16}, d{16},'Marker','.','MarkerSize',16,'Color','c','LineStyle','none');%2            %71
+a1=line(G{1}, d{1},'Marker','.','MarkerSize',16,'Color',[.8,.5,0],'LineStyle','none');%1      %56
+a7=line(G{15}, d{15},'Marker','.','MarkerSize',16,'Color','k','LineStyle','none');%0.7          %70
+a6=line(G{14}, d{14},'Marker','.','MarkerSize',16,'Color','b','LineStyle','none');%0.5          %69
+a5=line(G{13}, d{13},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none');%0.3          %68
+a2=line(G{2}, d{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
+a4=line(G{12}, d{12},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
+axis([0, 10,0,1500])
+legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
+       '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
+       '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
+       'Location','BestOutside')
+print -dpng Multiple_cases_steady_G_D.png
+%%
+figure(123);clf
+ylabel('Average Concentration (kg m^{-3})','FontSize',14)
+xlabel('Turbulence Shear Rate G (s^{-1})','FontSize',14)
+a14=line(G{22}, c{22},'Marker','.','MarkerSize',16,'Color',[.5,0,.5],'LineStyle','none');%100 %77
+a13=line(G{21}, c{21},'Marker','.','MarkerSize',16,'Color',[0,0,.5],'LineStyle','none');%50   %76
+a12=line(G{20}, c{20},'Marker','.','MarkerSize',16,'Color',[0,.5,.5],'LineStyle','none');%20  %75
+a11=line(G{19}, c{19},'Marker','.','MarkerSize',16,'Color',[.8,.8,.8],'LineStyle','none');%10 %74
+a10=line(G{18}, c{18},'Marker','.','MarkerSize',16,'Color','y','LineStyle','none');%7         %73
+a3=line(G{3}, c{3},'Marker','.','MarkerSize',16,'Color',[.5,0,0],'LineStyle','none');%5       %58
+a9=line(G{17}, c{17},'Marker','.','MarkerSize',16,'Color','r','LineStyle','none');%3            %72
+a8=line(G{16}, c{16},'Marker','.','MarkerSize',16,'Color','c','LineStyle','none');%2            %71
+a1=line(G{1}, c{1},'Marker','.','MarkerSize',16,'Color',[.8,.5,0],'LineStyle','none');%1      %56
+a7=line(G{15}, c{15},'Marker','.','MarkerSize',16,'Color','k','LineStyle','none');%0.7          %70
+a6=line(G{14}, c{14},'Marker','.','MarkerSize',16,'Color','b','LineStyle','none');%0.5          %69
+a5=line(G{13}, c{13},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none');%0.3          %68
+a2=line(G{2}, c{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
+a4=line(G{12}, c{12},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
+axis([0, 10,0,300])
+legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
+       '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
+       '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
+       'Location','BestOutside')
+print -dpng Multiple_cases_steady_G_C.png
+%%
+figure(124);clf
+ylabel('Average Diameter D (\mum)','FontSize',14)
+xlabel('Average Concentration (kg m^{-3})','FontSize',14)
+a14=line(c{22}, d{22},'Marker','.','MarkerSize',16,'Color',[.5,0,.5],'LineStyle','none');%100 %77
+a13=line(c{21}, d{21},'Marker','.','MarkerSize',16,'Color',[0,0,.5],'LineStyle','none');%50   %76
+a12=line(c{20}, d{20},'Marker','.','MarkerSize',16,'Color',[0,.5,.5],'LineStyle','none');%20  %75
+a11=line(c{19}, d{19},'Marker','.','MarkerSize',16,'Color',[.8,.8,.8],'LineStyle','none');%10 %74
+a10=line(c{18}, d{18},'Marker','.','MarkerSize',16,'Color','y','LineStyle','none');%7         %73
+a3=line(c{3}, d{3},'Marker','.','MarkerSize',16,'Color',[.5,0,0],'LineStyle','none');%5       %58
+a9=line(c{17}, d{17},'Marker','.','MarkerSize',16,'Color','r','LineStyle','none');%3            %72
+a8=line(c{16}, d{16},'Marker','.','MarkerSize',16,'Color','c','LineStyle','none');%2            %71
+a1=line(c{1}, d{1},'Marker','.','MarkerSize',16,'Color',[.8,.5,0],'LineStyle','none');%1      %56
+a7=line(c{15}, d{15},'Marker','.','MarkerSize',16,'Color','k','LineStyle','none');%0.7          %70
+a6=line(c{14}, d{14},'Marker','.','MarkerSize',16,'Color','b','LineStyle','none');%0.5          %69
+a5=line(c{13}, d{13},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none');%0.3          %68
+a2=line(c{2}, d{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
+a4=line(c{12}, d{12},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
+axis([0, 10,0,1500])
+legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
+       '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
+       '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
+       'Location','BestOutside')
+print -dpng Multiple_cases_steady_C_D.png
+%%
+figure(125);clf
+ylabel('settling velocity (mm s^{-1})','FontSize',14)
+xlabel('Average Concentration (kg m^{-3})','FontSize',14)
+a14=line(c{22}, wsa{22},'Marker','.','MarkerSize',16,'Color',[.5,0,.5],'LineStyle','none');%100 %77
+a13=line(c{21}, wsa{21},'Marker','.','MarkerSize',16,'Color',[0,0,.5],'LineStyle','none');%50   %76
+a12=line(c{20}, wsa{20},'Marker','.','MarkerSize',16,'Color',[0,.5,.5],'LineStyle','none');%20  %75
+a11=line(c{19}, wsa{19},'Marker','.','MarkerSize',16,'Color',[.8,.8,.8],'LineStyle','none');%10 %74
+a10=line(c{18}, wsa{18},'Marker','.','MarkerSize',16,'Color','y','LineStyle','none');%7         %73
+a3=line(c{3}, wsa{3},'Marker','.','MarkerSize',16,'Color',[.5,0,0],'LineStyle','none');%5       %58
+a9=line(c{17}, wsa{17},'Marker','.','MarkerSize',16,'Color','r','LineStyle','none');%3            %72
+a8=line(c{16}, wsa{16},'Marker','.','MarkerSize',16,'Color','c','LineStyle','none');%2            %71
+a1=line(c{1}, wsa{1},'Marker','.','MarkerSize',16,'Color',[.8,.5,0],'LineStyle','none');%1      %56
+a7=line(c{15}, wsa{15},'Marker','.','MarkerSize',16,'Color','k','LineStyle','none');%0.7          %70
+a6=line(c{14}, wsa{14},'Marker','.','MarkerSize',16,'Color','b','LineStyle','none');%0.5          %69
+a5=line(c{13}, wsa{13},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none');%0.3          %68
+a2=line(c{2}, wsa{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
+a4=line(c{12}, wsa{12},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
+axis([0, 10,0,6])
+legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
+       '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
+       '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
+       'Location','BestOutside')
+print -dpng Multiple_cases_steady_C_WS.png
+%%
+figure(126);clf
+ylabel('settling velocity (mm s^{-1})','FontSize',14)
+xlabel('Diameter D (\mum)','FontSize',14)
+a14=line(d{22}, wsa{22},'Marker','.','MarkerSize',16,'Color',[.5,0,.5],'LineStyle','none');%100 %77
+a13=line(d{21}, wsa{21},'Marker','.','MarkerSize',16,'Color',[0,0,.5],'LineStyle','none');%50   %76
+a12=line(d{20}, wsa{20},'Marker','.','MarkerSize',16,'Color',[0,.5,.5],'LineStyle','none');%20  %75
+a11=line(d{19}, wsa{19},'Marker','.','MarkerSize',16,'Color',[.8,.8,.8],'LineStyle','none');%10 %74
+a10=line(d{18}, wsa{18},'Marker','.','MarkerSize',16,'Color','y','LineStyle','none');%7         %73
+a3=line(d{3}, wsa{3},'Marker','.','MarkerSize',16,'Color',[.5,0,0],'LineStyle','none');%5       %58
+a9=line(d{17}, wsa{17},'Marker','.','MarkerSize',16,'Color','r','LineStyle','none');%3            %72
+a8=line(d{16}, wsa{16},'Marker','.','MarkerSize',16,'Color','c','LineStyle','none');%2            %71
+a1=line(d{1}, wsa{1},'Marker','.','MarkerSize',16,'Color',[.8,.5,0],'LineStyle','none');%1      %56
+a7=line(d{15}, wsa{15},'Marker','.','MarkerSize',16,'Color','k','LineStyle','none');%0.7          %70
+a6=line(d{14}, wsa{14},'Marker','.','MarkerSize',16,'Color','b','LineStyle','none');%0.5          %69
+a5=line(d{13}, wsa{13},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none');%0.3          %68
+a2=line(d{2}, wsa{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
+a4=line(d{12}, wsa{12},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
+%axis([0, 10,0,6])
+legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
+       '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
+       '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
+       'Location','BestOutside')
+print -dpng Multiple_cases_steady_D_WS.png
+%%
+figure(127);clf
+ylabel('settling velocity (mm s^{-1})','FontSize',14)
+xlabel('Turbulence Shear Rate G (s^{-1})','FontSize',14)
+a14=line(G{22}, wsa{22},'Marker','.','MarkerSize',16,'Color',[.5,0,.5],'LineStyle','none');%100 %77
+a13=line(G{21}, wsa{21},'Marker','.','MarkerSize',16,'Color',[0,0,.5],'LineStyle','none');%50   %76
+a12=line(G{20}, wsa{20},'Marker','.','MarkerSize',16,'Color',[0,.5,.5],'LineStyle','none');%20  %75
+a11=line(G{19}, wsa{19},'Marker','.','MarkerSize',16,'Color',[.8,.8,.8],'LineStyle','none');%10 %74
+a10=line(G{18}, wsa{18},'Marker','.','MarkerSize',16,'Color','y','LineStyle','none');%7         %73
+a3=line(G{3}, wsa{3},'Marker','.','MarkerSize',16,'Color',[.5,0,0],'LineStyle','none');%5       %58
+a9=line(G{17}, wsa{17},'Marker','.','MarkerSize',16,'Color','r','LineStyle','none');%3            %72
+a8=line(G{16}, wsa{16},'Marker','.','MarkerSize',16,'Color','c','LineStyle','none');%2            %71
+a1=line(G{1}, wsa{1},'Marker','.','MarkerSize',16,'Color',[.8,.5,0],'LineStyle','none');%1      %56
+a7=line(G{15}, wsa{15},'Marker','.','MarkerSize',16,'Color','k','LineStyle','none');%0.7          %70
+a6=line(G{14}, wsa{14},'Marker','.','MarkerSize',16,'Color','b','LineStyle','none');%0.5          %69
+a5=line(G{13}, wsa{13},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none');%0.3          %68
+a2=line(G{2}, wsa{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
+a4=line(G{12}, wsa{12},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
+axis([0, 10,0,6])
+legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
+       '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
+       '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
+       'Location','BestOutside')
+print -dpng Multiple_cases_steady_G_WS.png
 
 %%
-
+return
+%%
 nf = 2.;
 m = .2;
 q = (nf-1.)/(2.*m);
