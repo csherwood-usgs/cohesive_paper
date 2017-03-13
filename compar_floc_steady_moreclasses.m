@@ -270,18 +270,23 @@ eval(['print -dpng case_',run_name,'stress.png'])
 
 % Calculate G on rho 
 Gc = 0.5*(Gval(:,1:end-1)+Gval(:,2:end));
-nts = 10;
+if size(ws_av,1)>=10
+    nts = 10;
+else
+    nts = size(ws_av,1)-1;
+end
 
-ws_av_mn = mean(ws_av(end-10:end,:),1);
+
+ws_av_mn = mean(ws_av(end-nts:end,:),1);
 ws_av_mn2 = mean(ws_av,2);
-ws_av_sd = std(ws_av(end-10:end,:),1);
-fdiam_av_mn = mean(fdiam_av(end-10:end,:),1);
-fdiam_av_sd = std(fdiam_av(end-10:end,:),1);
+ws_av_sd = std(ws_av(end-nts:end,:),1);
+fdiam_av_mn = mean(fdiam_av(end-nts:end,:),1);
+fdiam_av_sd = std(fdiam_av(end-nts:end,:),1);
 tconc = squeeze(sum(mud,1));
-tconc_mn = mean(tconc(end-10:end,:),1);
-tconc_sd = std(tconc(end-10:end,:),1);
-Gc_mn = mean(Gc(end-10:end,:),1);
-Gc_sd = std(Gc(end-10:end,:),1);
+tconc_mn = mean(tconc(end-nts:end,:),1);
+tconc_sd = std(tconc(end-nts:end,:),1);
+Gc_mn = mean(Gc(end-nts:end,:),1);
+Gc_sd = std(Gc(end-nts:end,:),1);
 
 % report final values
 display('Means for last 10 timesteps')
@@ -354,20 +359,20 @@ figure(12);clf
 ylabel('Average Diameter D (\mum)','FontSize',14)
 xlabel('Turbulence Shear Rate G (s^{-1})','FontSize',14)
 %plot(G[0,:],d[0,:],'.',markersize=10,label="1 kg/m^3")
-line(G{1},d{1},'Marker','.','Color',[.5,0,0],'LineStyle','none')
-line(G{2},d{2},'Marker','.','Color',[.8,.5,0],'LineStyle','none')
-line(G{3},d{3},'Marker','.','Color',[.3,.3,.3],'LineStyle','none')
-line(G{4},d{4},'Marker','.','Color',[.6,.6,.6],'LineStyle','none')
-line(G{5}, d{5},'Marker','.','Color','g','LineStyle','none')
-line(G{6}, d{6},'Marker','.','Color','b','LineStyle','none')
-line(G{7}, d{7},'Marker','.','Color','k','LineStyle','none')
-line(G{8}, d{8},'Marker','.','Color','k','LineStyle','none')
-line(G{9}, d{9},'Marker','.','Color','k','LineStyle','none')
-line(G{10}, d{10},'Marker','.','Color','k','LineStyle','none')
-line(G{11}, d{11},'Marker','.','Color','k','LineStyle','none')
-line(G{12}, d{12},'Marker','.','Color','k','LineStyle','none')
-line(G{13}, d{13},'Marker','.','Color','k','LineStyle','none')
-line(G{14}, d{14},'Marker','.','Color','k','LineStyle','none')
+line(G{1},d{1},'Marker','.','Color',[.6,.6,.6],'LineStyle','none')
+line(G{2},d{2},'Marker','.','Color',[.3,.3,.3],'LineStyle','none')
+line(G{3},d{3},'Marker','.','Color','g','LineStyle','none')
+line(G{4},d{4},'Marker','.','Color','b','LineStyle','none')
+line(G{5}, d{5},'Marker','.','Color','k','LineStyle','none')
+line(G{6}, d{6},'Marker','.','Color',[.8,.5,0],'LineStyle','none')
+line(G{7}, d{7},'Marker','.','Color','c','LineStyle','none')
+line(G{8}, d{8},'Marker','.','Color','r','LineStyle','none')
+line(G{9}, d{9},'Marker','.','Color',[.5,0,0],'LineStyle','none')
+line(G{10}, d{10},'Marker','.','Color','y','LineStyle','none')
+line(G{11}, d{11},'Marker','.','Color',[.8,.8,.8],'LineStyle','none')
+line(G{12}, d{12},'Marker','.','Color',[0,.5,.5],'LineStyle','none')
+line(G{13}, d{13},'Marker','.','Color',[0,0,.5],'LineStyle','none')
+line(G{14}, d{14},'Marker','.','Color',[.5,0,.5],'LineStyle','none')
 axis([0, 20,0,5000])
 legend('0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3',...
        '1 kg/m^3','2 kg/m^3' ,'3 kg/m^3','5 kg/m^3','7 kg/m^3',...
@@ -394,7 +399,7 @@ a6=line(G{4}, d{4},'Marker','.','MarkerSize',16,'Color','b','LineStyle','none');
 a5=line(G{3}, d{3},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none');%0.3          %68
 a2=line(G{2}, d{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
 a4=line(G{1}, d{1},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
-axis([0, 10,0,1500])
+axis([0, 10,0,5000])
 legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
        '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
        '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
@@ -418,7 +423,7 @@ a6=line(G{4}, c{4},'Marker','.','MarkerSize',16,'Color','b','LineStyle','none');
 a5=line(G{3}, c{3},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none');%0.3          %68
 a2=line(G{2}, c{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
 a4=line(G{1}, c{1},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
-axis([0, 10,0,300])
+axis([0, 10,0,50])
 legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
        '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
        '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
@@ -442,7 +447,7 @@ a6=line(c{4}, d{4},'Marker','.','MarkerSize',16,'Color','b','LineStyle','none');
 a5=line(c{3}, d{3},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none');%0.3          %68
 a2=line(c{2}, d{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
 a4=line(c{1}, d{1},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
-axis([0, 10,0,1500])
+axis([0, 10,0,5000])
 legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
        '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
        '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
@@ -467,7 +472,7 @@ a5=line(c{3}, d{3},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none');
 a2=line(c{2}, d{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
 a4=line(c{1}, d{1},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
 set(gca,'YScale','log','XScale','log');grid
-axis([0, 10,0,1500])
+%axis([0, 10,0,5000])
 legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
        '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
        '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
@@ -491,7 +496,7 @@ a6=line(c{4}, wsa{4},'Marker','.','MarkerSize',16,'Color','b','LineStyle','none'
 a5=line(c{3}, wsa{3},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none');%0.3          %68
 a2=line(c{2}, wsa{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
 a4=line(c{1}, wsa{1},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
-axis([0, 10,0,6])
+axis([0, 10,0,17])
 legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
        '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
        '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
@@ -516,8 +521,8 @@ a5=line(c{3}, wsa{3},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none'
 a2=line(c{2}, wsa{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
 a4=line(c{1}, wsa{1},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
 set(gca,'YScale','log','XScale','log');grid
-axis([0, 10,0,6])
-set(gca,'YTick',[0.2,0.4,0.6,0.8,1,2,3,4,5,6])
+%axis([0, 100,0,17])
+set(gca,'YTick',[0.2,0.4,0.6,0.8,1,2,3,4,5,8,10,15])
 legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
        '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
        '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
@@ -565,7 +570,7 @@ a6=line(G{4}, wsa{4},'Marker','.','MarkerSize',16,'Color','b','LineStyle','none'
 a5=line(G{3}, wsa{3},'Marker','.','MarkerSize',16,'Color','g','LineStyle','none');%0.3          %68
 a2=line(G{2}, wsa{2},'Marker','.','MarkerSize',16,'Color',[.3,.3,.3],'LineStyle','none');%0.2   %57
 a4=line(G{1}, wsa{1},'Marker','.','MarkerSize',16,'Color',[.6,.6,.6],'LineStyle','none');%0.1   %67
-axis([0, 10,0,6])
+%axis([0, 3000,0,17])
 legend([a4(1),a2(1),a5(1),a6(1),a7(1),a1(1),a8(1),a9(1),a3(1),a10(1),a11(1),a12(1),a13(1),a14(1)],...
        '0.1 kg/m^3','0.2 kg/m^3','0.3 kg/m^3','0.5 kg/m^3','0.7 kg/m^3','1 kg/m^3',...
        '2 kg/m^3','3 kg/m^3','5 kg/m^3','7 kg/m^3','10 kg/m^3','20 kg/m^3','50 kg/m^3','100 kg/m^3' ,...
